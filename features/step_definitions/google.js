@@ -15,7 +15,7 @@ Then('I press the {string} key on Google', async function(text) {
     await testController.pressKey(text);
 });
 
-Then('I should see that the first Google\'s result is {string}', async function(text) {
+Then('I should see that the first Google\'s result is (.*)', async function(text) {
     var firstLink = Selector('#rso').find('a').with({boundTestRun: testController});
     await testController.expect(firstLink.innerText).contains(text);
 });

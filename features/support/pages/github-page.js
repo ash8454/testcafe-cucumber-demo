@@ -1,5 +1,4 @@
 const {Selector} = require('testcafe');
-import { ReactSelector } from 'testcafe-react-selectors';
 
 // Selectors
 
@@ -18,7 +17,7 @@ exports.url = async function(baseUrl){
 
 //get the search box
 exports.searchText = async function(text){
-    const searchTextbox = select(searchTextBox);
+    const searchTextbox = await select(searchTextBox).with({ visibilityCheck: true })();
     await testController.expect(searchTextBox).ok();
     await testController.typeText(searchTextbox, text)
 };

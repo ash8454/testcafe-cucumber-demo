@@ -13,7 +13,7 @@
   },
   "scripts": {
     "debug": "node --inspect=1337 --debug-brk --nolazy node_modules/cucumber/bin/cucumber-js --tags @debug --format json:./reports/report.json",
-    "test": "./node_modules/.bin/cucumber-js --tags @Smoke",
+    "test": "./node_modules/.bin/cucumber-js",
     "test-report": "./node_modules/.bin/cucumber-js --format json:./reports/report.json",
     "test-chrome": "./node_modules/.bin/cucumber-js  --world-parameters \"{\\\"browser\\\": \\\"chrome\\\"}\"",
     "test-ie": "./node_modules/.bin/cucumber-js  --world-parameters \"{\\\"browser\\\": \\\"ie\\\"}\"",
@@ -38,6 +38,7 @@
     "testcafe": "^1.1.0"
   },
   "devDependencies": {
-    "eslint-config-google": "^0.9.1"
+    "eslint-config-google": "^0.9.1",
+    "testcafe-react-selectors": "^3.3.0"
   }
 }

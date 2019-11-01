@@ -3,11 +3,10 @@ const Role = require('testcafe').Role;
 const githubPage = require('../support/pages/github-page');
 
 Given(/^I open the GitHub page$/, async function() {
-    await testController.setPageLoadTimeout(40000)
     await githubPage.url('https://github.com/')
 });
 
-When(/^I am typing my search request "([^"]*)" on GitHub$/, async function(text) {
+When(/^I am typing my search request (.*) on GitHub$/, async function(text) {
     await githubPage.searchText(text);
     //await testController.typeText(githubPage.github.searchButton(), text);
 });
@@ -17,15 +16,15 @@ Then(/^I am pressing (.*) key on GitHub$/, async function(text) {
 });
 
 Then(/^I should see that the first GitHub\'s result is (.*)$/, async function(text) {
-    await githubPage.validateSearchResults(text)
+    await githubPage.validateSearchResults(text);
 });
 
-// const gitHubRoleForExample = Role(githubPage.github.url() + 'login', async function(t) {
-//     await t
-//         .click(githubPage.github.loginButton())
-//         .expect(githubPage.github.loginErrorMessage().innerText).contains('Incorrect username or password.');
-// });
+const gitHubRoleForExample = Role(githubPage.url() + 'login', async function(t) {
+    await t
+        .click(githubPage.github.loginButton())
+        .expect(githubPage.github.loginErrorMessage().innerText).contains('Incorrect username or password.');
+});
 
-// Then(/^I am trying to use (.*)$/, async function(text) {
-//     await testController.useRole(gitHubRoleForExample);
-// });
+Then(/^I am trying to use (.*)$/, async function(text) {
+    await testController.useRole(gitHubRoleForExample);
+});
