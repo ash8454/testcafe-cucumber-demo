@@ -13,7 +13,7 @@ Description: I want to find TestCafe repository on GitHub
   | search_request|
   |TestCafe|
 
-  @Smoke
+  @Test
   Scenario Outline: Searching for TestCafe on GitHub
     When I am typing my search request <search_request> on GitHub
     Then I am pressing enter key on GitHub

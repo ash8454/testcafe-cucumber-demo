@@ -1,9 +1,12 @@
 const {Given, When, Then} = require('cucumber');
 const Role = require('testcafe').Role;
 const githubPage = require('../support/pages/github-page');
+require('custom-env').env(process.env.NODE_ENV, 'config');
+const url = process.env.GITHUB_URL || process.env.DEFAULT_URL;
 
 Given(/^I open the GitHub page$/, async function() {
-    await githubPage.url('https://github.com/')
+    const my_url = process.env.VM_IP_ADDRESS || '10.2.2.18'
+    await githubPage.url(my_url);
 });
 
 When(/^I am typing my search request (.*) on GitHub$/, async function(text) {
